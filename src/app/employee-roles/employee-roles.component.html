@@ -1,0 +1,49 @@
+<h3>Employee Roles</h3>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-4 mx-auto">
+      <label for="name" class="form-label">Role Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        id="name"
+        class="form-control"
+        placeholder="enter role name"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-4 mx-auto">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        formControlName="description"
+        id="description"
+        class="form-control"
+        placeholder="enter description"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let role of roleList">
+      <td>{{ role.id }}</td>
+      <td>{{ role.name }}</td>
+      <td>{{ role.description }}</td>
+    </tr>
+  </tbody>
+</table>
