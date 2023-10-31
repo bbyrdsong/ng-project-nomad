@@ -1,1 +1,86 @@
-<p>office-locations works!</p>
+<h3>Office Locations</h3>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="name" class="form-label">Location Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        placeholder="enter location name"
+        formControlName="name"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="address" class="form-label">Street Address</label>
+      <input
+        type="text"
+        id="address"
+        class="form-control"
+        placeholder="enter street address"
+        formControlName="address"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2">
+      <label for="city" class="form-label">City</label>
+      <input
+        type="text"
+        id="city"
+        class="form-control"
+        placeholder="enter city"
+        formControlName="city"
+      />
+    </div>
+    <div class="col-2">
+      <label for="state" class="form-label">State</label>
+      <input
+        type="text"
+        id="state"
+        class="form-control"
+        placeholder="enter state abbreviation"
+        formControlName="state"
+      />
+    </div>
+    <div class="col-2">
+      <label for="zip" class="form-label">Zip</label>
+      <input
+        type="text"
+        id="zip"
+        class="form-control"
+        placeholder="enter zipcode"
+        formControlName="zip"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>address</th>
+      <th>city</th>
+      <th>state</th>
+      <th>zip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let office of officeList">
+      <td>{{ office.id }}</td>
+      <td>{{ office.name }}</td>
+      <td>{{ office.address }}</td>
+      <td>{{ office.city }}</td>
+      <td>{{ office.state }}</td>
+      <td>{{ office.zip }}</td>
+    </tr>
+  </tbody>
+</table>
