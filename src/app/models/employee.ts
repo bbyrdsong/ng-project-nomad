@@ -1,8 +1,9 @@
 export interface Employee {
-    id: number;
-    name: string;
-    email: string;
-    phone: string;
-    officeLocationId: number;
-    active: boolean;
+  id: number;
+  name: string;
+  employeeRoleId: number;
+  email: string;
+  phone: string;
+  officeLocationId: number;
+  active: boolean;
 }

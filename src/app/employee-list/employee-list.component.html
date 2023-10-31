@@ -1,1 +1,70 @@
-<p>employee-list works!</p>
+<h3>Employees</h3>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        placeholder="enter employee name"
+        formControlName="name"
+      />
+    </div>
+    <div class="col-3">
+      <label for="employeeRoleId" class="form-label">Role</label>
+      <select
+        id="employeeRoleId"
+        class="form-control"
+        formControlName="employeeRoleId"
+      >
+        <option value="" selected>select role</option>
+        <option *ngFor="let role of roleList" value="{{ role.id }}">
+          {{ role.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-4">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        placeholder="enter email address"
+        formControlName="email"
+      />
+    </div>
+    <div class="col-2">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        type="phone"
+        id="phone"
+        class="form-control"
+        placeholder="enter phone number"
+        formControlName="phone"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2">
+      <label for="officeLocationId" class="form-label">Home Office</label>
+      <select
+        id="officeLocationId"
+        class="form-control"
+        formControlName="officeLocationId"
+      >
+        <option value="" selected>select office location</option>
+        <option *ngFor="let office of officeList" value="{{ office.id }}">
+          {{ office.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

@@ -3,6 +3,7 @@ import { of } from 'rxjs';
 
 const ROLETABLE = 'roles';
 const OFFICETABLE = 'offices';
+const EMPLOYEETABLE = 'employees';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ const OFFICETABLE = 'offices';
 export class LocalStorageService {
   roleList: any[] = [];
   officeList: any[] = [];
+  employeeList: any[] = [];
 
   getRoles() {
     return JSON.parse(localStorage.getItem(ROLETABLE) || '[]');
@@ -32,13 +34,28 @@ export class LocalStorageService {
   upsertOffice(office: any) {
     if (office.id) {
       const index = this.officeList.findIndex((r) => r.id === office.id);
-      this.roleList[index] = office;
+      this.officeList[index] = office;
     } else {
       const newOffice = this.checkAndSetId(office, this.officeList);
 
       this.officeList.push(newOffice);
     }
     localStorage.setItem(OFFICETABLE, JSON.stringify(this.officeList));
+  }
+
+  getEmployees() {
+    return JSON.parse(localStorage.getItem(EMPLOYEETABLE) || '[]');
+  }
+  upsertEmployee(employee: any) {
+    if (employee.id) {
+      const index = this.employeeList.findIndex((r) => r.id === employee.id);
+      this.employeeList[index] = employee;
+    } else {
+      const newEmployee = this.checkAndSetId(employee, this.employeeList);
+
+      this.employeeList.push(newEmployee);
+    }
+    localStorage.setItem(EMPLOYEETABLE, JSON.stringify(this.employeeList));
   }
 
   checkAndSetId(model: any, arr: any[]) {
