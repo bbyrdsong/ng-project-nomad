@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 const ROLETABLE = 'roles';
 const OFFICETABLE = 'offices';
 const EMPLOYEETABLE = 'employees';
+const SCHEDULETABLE = 'schedules';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class LocalStorageService {
   roleList: any[] = [];
   officeList: any[] = [];
   employeeList: any[] = [];
+  scheduleList: any[] = [];
 
   getRoles() {
     return JSON.parse(localStorage.getItem(ROLETABLE) || '[]');
@@ -56,6 +58,22 @@ export class LocalStorageService {
       this.employeeList.push(newEmployee);
     }
     localStorage.setItem(EMPLOYEETABLE, JSON.stringify(this.employeeList));
+  }
+
+  getSchedules() {
+    return JSON.parse(localStorage.getItem(SCHEDULETABLE) || '[]');
+  }
+
+  upsertSchedule(schedule: any) {
+    if (schedule.id) {
+      const index = this.scheduleList.findIndex((r) => r.id === schedule.id);
+      this.scheduleList[index] = schedule;
+    } else {
+      const newSchedule = this.checkAndSetId(schedule, this.scheduleList);
+
+      this.scheduleList.push(newSchedule);
+    }
+    localStorage.setItem(SCHEDULETABLE, JSON.stringify(this.scheduleList));
   }
 
   checkAndSetId(model: any, arr: any[]) {
