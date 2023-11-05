@@ -15,7 +15,7 @@
       <label for="employeeRoleId" class="form-label">Role</label>
       <select
         id="employeeRoleId"
-        class="form-control"
+        class="form-select"
         formControlName="employeeRoleId"
       >
         <option value="" selected>select role</option>
@@ -48,11 +48,11 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col-2">
+    <div class="col-3">
       <label for="officeLocationId" class="form-label">Home Office</label>
       <select
         id="officeLocationId"
-        class="form-control"
+        class="form-select"
         formControlName="officeLocationId"
       >
         <option value="" selected>select office location</option>
@@ -68,3 +68,23 @@
     </div>
   </div>
 </form>
+<table class="table table-striped" *ngIf="employeeList.length > 0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Home Office</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeList">
+      <td>{{ employee.name }}</td>
+      <td>{{ getRoleName(employee.employeeRoleId) }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.phone }}</td>
+      <td>{{ getOfficeName(employee.officeLocationId) }}</td>
+    </tr>
+  </tbody>
+</table>

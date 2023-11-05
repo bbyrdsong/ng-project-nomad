@@ -49,4 +49,14 @@ export class EmployeeListComponent implements OnInit {
     this.fg.reset();
     this.getEmployees();
   }
+
+  getRoleName(id: number) {
+    const role = this.roleList.find((r) => r.id == id);
+    return role.name;
+  }
+
+  getOfficeName(id: number) {
+    const office = this.officeList.find((o) => o.id == id);
+    return office.name;
+  }
 }

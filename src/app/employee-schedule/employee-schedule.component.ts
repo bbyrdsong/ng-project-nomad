@@ -48,4 +48,11 @@ export class EmployeeScheduleComponent implements OnInit {
     this.fg.reset();
     this.getScheduleList();
   }
+
+  onEmployeeChange(e: any) {
+    const id = e.target.value;
+    const employee = this.employeeList.find((e) => e.id == id);
+    this.fg.controls['employeeRoleId'].setValue(employee.employeeRoleId);
+    this.fg.controls['officeLocationId'].setValue(employee.officeLocationId);
+  }
 }

@@ -1,1 +1,96 @@
-<p>employee-schedule works!</p>
+<h3>Schedule</h3>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-4">
+      <select
+        name="employeeId"
+        id="employeeId"
+        class="form-select"
+        formControlName="employeeId"
+        (change)="onEmployeeChange($event)"
+      >
+        <option value="">select employee</option>
+        <option *ngFor="let employee of employeeList" [value]="employee.id">
+          {{ employee.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-4">
+      <select
+        name="employeeRoleId"
+        id="employeeRoleId"
+        class="form-select"
+        formControlName="employeeRoleId"
+      >
+        <option value="">select role for office</option>
+        <option *ngFor="let role of employeeRoleList" [value]="role.id">
+          {{ role.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-4">
+      <select
+        name="officeLocationId"
+        id="officeLocationId"
+        class="form-select"
+        formControlName="officeLocationId"
+      >
+        <option value="">select location</option>
+        <option *ngFor="let location of officeList" [value]="location.id">
+          {{ location.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3">
+      <label for="date" class="form-label">Work Date</label>
+      <input
+        type="date"
+        name="date"
+        id="date"
+        formControlName="date"
+        placeholder="enter work date"
+        class="form-control"
+      />
+    </div>
+    <div class="col-3">
+      <label for="startTime" class="form-label">Start Time</label>
+      <input
+        type="time"
+        name="startTime"
+        id="startTime"
+        formControlName="startTime"
+        placeholder="start time"
+        class="form-control"
+      />
+    </div>
+    <div class="col-3">
+      <label for="endTime" class="form-label">End Time</label>
+      <input
+        type="time"
+        name="endTime"
+        id="endTime"
+        formControlName="endTime"
+        placeholder="end time"
+        class="form-control"
+      />
+    </div>
+    <div class="col-3">
+      <label for="notes" class="form-label">Notes</label>
+      <input
+        type="text"
+        class="form-control"
+        id="notes"
+        name="notes"
+        formControlName="notes"
+        placeholder="enter notes"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
