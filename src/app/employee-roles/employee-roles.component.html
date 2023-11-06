@@ -1,7 +1,7 @@
 <h3>Employee Roles</h3>
 <form [formGroup]="fg" (ngSubmit)="onSubmit()">
   <div class="row mb-3">
-    <div class="col-4 mx-auto">
+    <div class="col-4">
       <label for="name" class="form-label">Role Name</label>
       <input
         type="text"
@@ -11,22 +11,18 @@
         placeholder="enter role name"
       />
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-4 mx-auto">
+    <div class="col-4">
       <label for="description" class="form-label">Description</label>
-      <input
-        type="text"
-        formControlName="description"
-        id="description"
-        class="form-control"
-        placeholder="enter description"
-      />
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4 mx-auto">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="input-group">
+        <input
+          type="text"
+          formControlName="description"
+          id="description"
+          class="form-control"
+          placeholder="enter description"
+        />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </div>
   </div>
 </form>
